@@ -4,6 +4,9 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    let indexZero = arr.shift()
+    arr.push(indexZero)
+    return arr
 }
 
 
@@ -16,6 +19,14 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let largestNumber = 0;
+    for (let i = 0; i < arr.length; i++) {
+        const number = arr[i];
+        if(number > largestNumber) {
+            largestNumber = number
+        } 
+    }
+    return largestNumber
 }
 
 
@@ -28,6 +39,12 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        const currentIndex = arr[i];
+        newArr.push(currentIndex * arr.length)
+    };
+    return newArr;
 }
 
 
@@ -41,7 +58,15 @@ function elemsTimesLength(arr) {
 // Primitive data types - https://developer.mozilla.org/en-US/docs/Glossary/Primitive
 
 function arrayFlattener(arr) {
-
+    newArr = arr.flat(4);
+    debugger
+    for (let i = 0; i < newArr.length; i++) {
+        const element = newArr[i];
+        if(typeof(element) === 'object') {
+            delete element;
+        }
+    }
+    return newArr;
 }
 
 
@@ -75,7 +100,13 @@ let flights = [{
 
 
 function flightCost(destination, firstClass) {
-    //***hint: use the find method***
+    let place = destination.toUpperCase();
+    let flight = flights.find(f => f.to == place)
+    if(firstClass) {
+        return flight.prices.firstClass
+    } else {
+        return flight.prices.standard
+    }
 
 }
 
@@ -96,7 +127,11 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 17, name: 'St. MaryLou de la Playa Carmen' }, { id: 51, name: 'Doug' },
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
-function findById(id) {
+function findById(num) {
+    let person = staff.find(x => x.id == num);
+    if(person == num) {
+        return person
+    }
 
 }
 
